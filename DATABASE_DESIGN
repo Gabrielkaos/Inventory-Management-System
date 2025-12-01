@@ -1,0 +1,19 @@
+
+
+
+Products
+-Name
+-Description
+-Unique Code
+-Category
+-Unit
+-Stock
+-User
+-Updated_at - date added/modified
+-Updated_by
+-Status - active/discontinued/out-of-stock
+
+User
+-Name
+-Email
+-Password
