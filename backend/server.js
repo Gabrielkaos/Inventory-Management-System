@@ -4,7 +4,8 @@ const config = require("./config/config")
 const { connectDB } = require("./config/database")
 const logger = require("./utils/logger")
 const {limiter, securityHeaders} = require("./middleware/security")
-const {errorHandler, asyncHandler, notFound} = require("./middleware/errorHandler")
+const {errorHandler, notFound} = require("./middleware/errorHandler")
+const authRoute = require("./routes/auth")
 
 app = express()
 const PORT = config.server.port
@@ -33,6 +34,33 @@ app.use((req, res, next) => {
     userAgent: req.get('user-agent')
   })
   next()
+})
+
+//health check
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    environment: config.server.env
+  })
+})
+
+//routes
+app.use("/api/auth",authRoute)
+
+
+//landing
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Inventory API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/health',
+      auth: '/api/auth',
+      notes: '/api/notes'
+    }
+  })
 })
 
 //error handlers

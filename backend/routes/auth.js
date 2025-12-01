@@ -8,7 +8,7 @@ const { validateRegister, validateLogin } = require("../middleware/validation")
 const { asyncHandler, AppError } = require("../middleware/errorHandler")
 
 
-router = express.router()
+router = express.Router()
 
 
 router.use(authLimiter)
@@ -29,7 +29,9 @@ router.post("/register",validateRegister, asyncHandler(async (req, res)=>{
         throw new AppError("Username or email already exists")
     }
 
-    const user = await User.create({
+    logger.info("No existing user found, registering...")
+
+    const user = User.create({
         username, email, password
     })
 
@@ -80,3 +82,5 @@ router.post("/login",validateLogin,asyncHandler(async (req, res)=>{
     })
 
 }))
+
+module.exports = router
