@@ -17,7 +17,6 @@ app.set("trust proxy",1)
 app.use(securityHeaders)
 app.use(limiter)
 
-
 //cors and express.json
 app.use(cors({
     origin:config.cors.origin,
@@ -36,6 +35,7 @@ app.use((req, res, next) => {
   next()
 })
 
+//error handlers
 app.use(notFound)
 app.use(errorHandler)
 
