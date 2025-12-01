@@ -32,4 +32,13 @@ const logger = winston.createLogger({
     ]
 })
 
-if (config.)
+if (config.server.env !== 'production'){
+    logger.add(new winston.transports.Console({
+        format:winston.format.combine(
+            winston.format.colorize(),
+            winston.format.simple()
+        )
+    }))
+}
+
+module.exports = logger

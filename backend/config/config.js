@@ -3,7 +3,7 @@ require('dotenv').config()
 
 module.exports = {
     server:{
-        port:process.env.PORT
+        port:process.env.PORT,
         env:process.env.ENV
     },
 
