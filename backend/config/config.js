@@ -7,7 +7,4 @@ module.exports = {
         env:process.env.ENV
     },
 
-    logger:{
-        log_level:process.env.PORT
-    }
 }

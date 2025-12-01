@@ -1,6 +1,5 @@
 const winston = require("winston")
 const path = require("path")
-const config = require("../config/config")
 
 
 const logsDir = path.join(__dirname,'../logs')
@@ -13,7 +12,7 @@ const logFormat = winston.format.combine(
 )
 
 const logger = winston.createLogger({
-    level: config.logger.log_level,
+    level: 'info',
     format:logFormat,
     defaultMeta:{service:'inventory-api'},
     transports : [
@@ -32,7 +31,7 @@ const logger = winston.createLogger({
     ]
 })
 
-if (config.server.env !== 'production'){
+if (process.env.ENV !== 'production'){
     logger.add(new winston.transports.Console({
         format:winston.format.combine(
             winston.format.colorize(),
