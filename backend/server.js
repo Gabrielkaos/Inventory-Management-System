@@ -3,7 +3,7 @@ const cors = require("cors")
 const config = require("./config/config")
 const { connectDB } = require("./config/database")
 const logger = require("./utils/logger")
-const {limiter} = require("./middleware/security")
+const {limiter, securityHeaders} = require("./middleware/security")
 
 
 app = express()
@@ -15,6 +15,7 @@ app.set("trust proxy",1)
 
 //security
 app.use(limiter)
+app.use(securityHeaders)
 
 //cors and express.json
 app.use(cors({

@@ -10,5 +10,20 @@ const limiter = rateLimit({
     legacyHeaders:false,
 })
 
+const authLimiter = rateLimit({
+    windowMs:15*60*1000,
+    max:5,
+    skipSuccessfulRequests:true,
+    message:"Too many authentication attempts, try again later."
+})
 
-module.exports = {limiter}
+const securityHeaders = helmet({
+    contentSecurityPolicy:{
+        directives:{
+            defaultSrc:["'self'"],
+            styleSrc:["'self'","'unsafe-inline'"],
+        },
+    },
+})
+
+module.exports = {limiter, authLimiter, securityHeaders}
