@@ -9,4 +9,4 @@ const jwt = require("jsonwebtoken")
 router = express.router()
 
 
-router.use(authLimiter)
+// router.use(authLimiter)

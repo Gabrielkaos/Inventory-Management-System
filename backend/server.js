@@ -14,8 +14,9 @@ connectDB()
 app.set("trust proxy",1)
 
 //security
-app.use(limiter)
 app.use(securityHeaders)
+app.use(limiter)
+
 
 //cors and express.json
 app.use(cors({

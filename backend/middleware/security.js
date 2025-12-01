@@ -6,7 +6,7 @@ const limiter = rateLimit({
     windowMs: config.rateLimit.windowMs,
     max: config.rateLimit.max_requests,
     message:"Too many requests from this IP, try again later",
-    standardheaders:true,
+    standardHeaders:true,
     legacyHeaders:false,
 })
 

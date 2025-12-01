@@ -11,7 +11,7 @@ module.exports = {
     },
 
     rateLimit:{
-        windowMs:RATE_LIMIT_WINDOW_MS,
-        max_requests:RATE_LIMIT_MAX_REQUESTS
+        windowMs:parseInt(process.env.RATE_LIMIT_WINDOW_MS),
+        max_requests:parseInt(process.env.RATE_LIMIT_MAX_REQUESTS)
     }
 }
