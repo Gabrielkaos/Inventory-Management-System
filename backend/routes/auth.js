@@ -69,7 +69,7 @@ router.post("/login",validateLogin,asyncHandler(async (req, res)=>{
     user.lastLogin = new Date()
     await user.save()
 
-    const token = jwt.sign({userId:user.id,username, email}, config.jwt.secret,{expiresIn:config.jwt.expire})
+    const token = jwt.sign({userId:user.id,username:user.username, email}, config.jwt.secret,{expiresIn:config.jwt.expire})
 
     logger.info(`Login successful:${email}`)
 
@@ -77,7 +77,7 @@ router.post("/login",validateLogin,asyncHandler(async (req, res)=>{
         status:"success",
         message:"Login successful",
         data:{
-            token, user:{id:user.id, username ,email}
+            token, user:{id:user.id, username:user.username ,email}
         }
     })
 
