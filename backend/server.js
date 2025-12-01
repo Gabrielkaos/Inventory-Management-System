@@ -4,7 +4,7 @@ const config = require("./config/config")
 const { connectDB } = require("./config/database")
 const logger = require("./utils/logger")
 const {limiter, securityHeaders} = require("./middleware/security")
-
+const {errorHandler, asyncHandler, notFound} = require("./middleware/errorHandler")
 
 app = express()
 const PORT = config.server.port
@@ -35,6 +35,8 @@ app.use((req, res, next) => {
   next()
 })
 
+app.use(notFound)
+app.use(errorHandler)
 
 app.listen(PORT,()=>{
     logger.info(`Server running on port ${PORT}`)
