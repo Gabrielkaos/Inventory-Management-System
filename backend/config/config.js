@@ -13,5 +13,10 @@ module.exports = {
     rateLimit:{
         windowMs:parseInt(process.env.RATE_LIMIT_WINDOW_MS),
         max_requests:parseInt(process.env.RATE_LIMIT_MAX_REQUESTS)
+    },
+
+    jwt:{
+        secret:process.env.JWT_SECRET,
+        expire:process.env.JWT_EXPIRE
     }
 }
