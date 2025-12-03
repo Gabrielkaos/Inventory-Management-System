@@ -2,7 +2,7 @@ const express = require("express")
 const {authLimiter} = require("../middleware/security")
 const config = require("../config/config")
 const logger = require("../utils/logger")
-const {User} = require("../models/index")
+const User = require("../models/User")
 const jwt = require("jsonwebtoken")
 const { validateRegister, validateLogin } = require("../middleware/validation")
 const { asyncHandler, AppError } = require("../middleware/errorHandler")
@@ -17,6 +17,9 @@ router.use(authLimiter)
 //register new account
 router.post("/register",validateRegister, asyncHandler(async (req, res)=>{
     const {username, email, password} = req.body
+
+    logger.info("Registering...")
+    logger.info("Register:Finding if already exists...")
 
     //check if there is one already in db
     const existingUser = await User.findOne({
@@ -51,6 +54,8 @@ router.post("/register",validateRegister, asyncHandler(async (req, res)=>{
 
 router.post("/login",validateLogin,asyncHandler(async (req, res)=>{
     const {email, password} = req.body
+
+    // logger.info(`Login:${email}`)
 
     const user = await User.findOne({
         where: {email, isActive:true}
