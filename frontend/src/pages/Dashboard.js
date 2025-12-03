@@ -1,10 +1,15 @@
 import { AuthContext } from "../context/AuthContext"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import "./Dashboard.css"
 
 const Dashboard = () => {
     const {user, logout} = useContext(AuthContext)
-    
+    const [products, setProducts] = useState([])
+
+
+    const fetchProducts = async () => {
+        
+    }
 
     return (
         <div>
@@ -16,7 +21,12 @@ const Dashboard = () => {
             </header>
 
             <div>
+                <h2>Categories</h2>
+                <ul>
+                    <li>
 
+                    </li>
+                </ul>
             </div>
         </div>
     )
