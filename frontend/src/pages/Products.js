@@ -67,10 +67,6 @@ const Products = () => {
                 setError(err.response?.data?.error || "Server error");
             }
         }
-        
-
-        
-
     }
 
     return (
@@ -108,7 +104,7 @@ const Products = () => {
                 <ul>
                     {products.length===0 ? <div>No products found</div>:products.map((product)=>(
                         <li key={product.id}>
-                            {product.name} - {product.description} {product.categoryId.name} - {product.uniqueCode} - {product.stock} - {product.unit}
+                            {product.name} - {product.description} - {product.uniqueCode} - {product.stock} - {product.unit}
                         </li>
                     ))}
                 </ul>
