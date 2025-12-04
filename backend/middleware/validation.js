@@ -60,16 +60,6 @@ const validateProduct = [
         .isString()
         .withMessage("Description must be a string"),
 
-    body("uniqueCode")
-        .trim()
-        .isLength({ min: 1, max: 50 })
-        .withMessage("Unique code is required and must be 1-50 characters long"),
-
-    body("category")
-        .trim()
-        .isLength({ min: 1, max: 50 })
-        .withMessage("Category is required and must be 1-50 characters long"),
-
     body("unit")
         .trim()
         .isLength({ min: 1, max: 20 })

@@ -31,9 +31,10 @@ const Product = sequelize.define("Product", {
         field: "unique_code"
     },
 
-    category: {
-        type: DataTypes.STRING(50),
-        allowNull: false
+    categoryId: {
+        type: DataTypes.UUID,
+        allowNull: true,
+        field: "category_id"
     },
 
     unit: {
