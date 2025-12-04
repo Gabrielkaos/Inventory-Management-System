@@ -13,8 +13,21 @@ router.use(authMiddleWare)
 
 
 router.get("/", asyncHandler(async (req, res)=>{
-    
-    const products = Product.findAll({
-        
+    const userId = req.user.userId
+    const products = await Product.findAll({
+        where:{updatedBy:userId},
+        order:[
+            ["updated_at","DESC"],
+            ["created_at","DESC"]
+        ]
+    })
+
+    res.json({
+        status:"success",
+        results:products.length,
+        data:{products}
     })
 }))
+
+
+module.exports = router
