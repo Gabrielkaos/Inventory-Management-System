@@ -59,10 +59,10 @@ const Product = sequelize.define("Product", {
         defaultValue: "active"
     },
 
-    updatedBy: {
+    userId: {
         type: DataTypes.UUID,
         allowNull: true,
-        field: "updated_by"
+        field: "user_id"
     }
 
 }, {

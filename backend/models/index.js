@@ -11,11 +11,6 @@ User.hasMany(Product, {
     as: "products"
 })
 
-Product.belongsTo(User, {
-    foreignKey: "updated_by",
-    as: "updatedByUser"
-})
-
 
 Product.belongsTo(Category, {
     foreignKey: "category_id",
