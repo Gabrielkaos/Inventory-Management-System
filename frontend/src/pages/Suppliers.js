@@ -183,21 +183,27 @@ const Suppliers = () => {
                         {/* Statistics */}
                         <div className="stats-grid">
                             <div className="stat-card">
-                                <div className="stat-icon">🏢</div>
+                                <div className="stat-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M200-80q-33 0-56.5-23.5T120-160v-451q-18-11-29-28.5T80-680v-120q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v120q0 23-11 40.5T840-611v451q0 33-23.5 56.5T760-80H200Zm0-520v440h560v-440H200Zm-40-80h640v-120H160v120Zm200 280h240v-80H360v80Zm120 20Z"/></svg>
+                                </div>
                                 <div className="stat-info">
                                     <h3>{stats.total}</h3>
                                     <p>Total Suppliers</p>
                                 </div>
                             </div>
                             <div className="stat-card">
-                                <div className="stat-icon">✅</div>
+                                <div className="stat-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#78A75A"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                </div>
                                 <div className="stat-info">
                                     <h3>{stats.active}</h3>
                                     <p>Active Suppliers</p>
                                 </div>
                             </div>
                             <div className="stat-card stat-warning">
-                                <div className="stat-icon">⏸️</div>
+                                <div className="stat-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="m820-28-92-92H160q-33 0-56.5-23.5T80-200v-440q0-33 23.5-56.5T160-720h80l80 80H160v440h487L28-820l56-56L876-84l-56 56Zm60-166-80-80v-366H434L320-754v-46q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v446ZM400-720h160v-80H400v80Zm217 263Zm-189 37Z"/></svg>
+                                </div>
                                 <div className="stat-info">
                                     <h3>{stats.inactive}</h3>
                                     <p>Inactive Suppliers</p>
@@ -289,24 +295,32 @@ const Suppliers = () => {
                                         <div className="supplier-card-body">
                                             <div className="supplier-info">
                                                 <div className="info-item">
-                                                    <span className="info-icon">📧</span>
+                                                    <span className="info-icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#434343"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480v58q0 59-40.5 100.5T740-280q-35 0-66-15t-52-43q-29 29-65.5 43.5T480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480v58q0 26 17 44t43 18q26 0 43-18t17-44v-58q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93h200v80H480Zm0-280q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Z"/></svg>
+                                                    </span>
                                                     <span>{supplier.email}</span>
                                                 </div>
                                                 {supplier.phone && (
                                                     <div className="info-item">
-                                                        <span className="info-icon">📱</span>
+                                                        <span className="info-icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#434343"><path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"/></svg>
+                                                        </span>
                                                         <span>{supplier.phone}</span>
                                                     </div>
                                                 )}
                                                 {supplier.contactPerson && (
                                                     <div className="info-item">
-                                                        <span className="info-icon">👤</span>
+                                                        <span className="info-icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#434343"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>
+                                                        </span>
                                                         <span>{supplier.contactPerson}</span>
                                                     </div>
                                                 )}
                                                 {supplier.address && (
                                                     <div className="info-item">
-                                                        <span className="info-icon">📍</span>
+                                                        <span className="info-icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#434343"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg>
+                                                        </span>
                                                         <span>{supplier.address}</span>
                                                     </div>
                                                 )}
@@ -319,25 +333,25 @@ const Suppliers = () => {
                                                 onClick={() => openDetails(supplier)}
                                                 title="View Details"
                                             >
-                                                👁️ View
+                                                View
                                             </button>
                                             <button
                                                 className="btn-edit"
                                                 onClick={() => openEdit(supplier)}
                                             >
-                                                ✏️ Edit
+                                                Edit
                                             </button>
                                             <button
                                                 className={`btn-toggle ${supplier.status === 'active' ? 'btn-deactivate' : 'btn-activate'}`}
                                                 onClick={() => toggleStatus(supplier)}
                                             >
-                                                {supplier.status === 'active' ? '⏸️ Deactivate' : '▶️ Activate'}
+                                                {supplier.status === 'active' ? 'Deactivate' : 'Activate'}
                                             </button>
                                             <button
                                                 className="btn-delete"
                                                 onClick={() => deleteSupplier(supplier.id)}
                                             >
-                                                🗑️
+                                                Delete
                                             </button>
                                         </div>
                                     </div>
@@ -386,15 +400,21 @@ const Suppliers = () => {
                                                         <button
                                                             className="btn-view"
                                                             onClick={() => openDetails(supplier)}
-                                                        >👁️</button>
+                                                        >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#ffffffff"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+                                                        </button>
                                                         <button
                                                             className="btn-edit"
                                                             onClick={() => openEdit(supplier)}
-                                                        >✏️</button>
+                                                        >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#6b5c5cff"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
+                                                        </button>
                                                         <button
                                                             className="btn-delete"
                                                             onClick={() => deleteSupplier(supplier.id)}
-                                                        >🗑️</button>
+                                                        >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#434343"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                                                       </button>
                                                     </div>
                                                 </td>
                                             </tr>
