@@ -8,6 +8,7 @@ const {errorHandler, notFound} = require("./middleware/errorHandler")
 const authRoute = require("./routes/auth")
 const productRoute = require("./routes/products")
 const categoryRoute = require("./routes/categories")
+const supplierRoute = require("./routes/supplier")
 
 app = express()
 const PORT = config.server.port
@@ -52,6 +53,7 @@ app.get('/health', (req, res) => {
 app.use("/api/auth",authRoute)
 app.use("/api/products",productRoute)
 app.use("/api/categories",categoryRoute)
+app.use("/api/suppliers",supplierRoute)
 
 //landing
 app.get('/', (req, res) => {
