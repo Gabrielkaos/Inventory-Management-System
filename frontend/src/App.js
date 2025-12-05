@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import Products from './pages/Products';
+import Categories from './pages/Categories';
 
 function App() {
   return (
@@ -17,6 +18,11 @@ function App() {
           <Route path='/products' element={
               <ProtectedRoute>
                   <Products/>
+              </ProtectedRoute>
+            }/>
+            <Route path='/categories' element={
+              <ProtectedRoute>
+                  <Categories/>
               </ProtectedRoute>
             }/>
             

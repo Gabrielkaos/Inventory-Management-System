@@ -82,7 +82,7 @@ const Products = () => {
                     <textarea placeholder="Description" onChange={(e)=>setProductDescription(e.target.value)} value={productDescription}/>
                     
                     <select required onChange={(e)=>setProductCategory(e.target.value)} value={productCategory}>
-                        <option>Select Category</option>
+                        <option value="">Select Category</option>
                         {categories.map((category)=>(
                             <option key={category.id} value={category.id}>{category.name}</option>
                         ))}
