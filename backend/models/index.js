@@ -15,12 +15,12 @@ User.hasMany(Product, {
 Product.belongsTo(Category, {
     foreignKey: "category_id",
     as: "category"
-});
+})
 
 Category.hasMany(Product, {
     foreignKey: "category_id",
     as: "products"
-});
+})
 
 
 module.exports = {User, Product, Category}

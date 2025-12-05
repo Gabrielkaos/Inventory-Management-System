@@ -2,6 +2,8 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "./Login.css";
+
 
 const Register = () =>{
     const [username, setUsername] = useState("")
@@ -24,10 +26,10 @@ const Register = () =>{
     }
 
     return (
-        <div>
-            <div>
+        <div className="login-page">
+            <div className="login-card">
             <h2>Register</h2>
-            {error && <div>{error}</div>}
+            {error && <div className="login-error">{error}</div>}
             <form onSubmit={(e)=>handleSubmit(e)}>
                 <input placeholder="Username" value={username} type="text" onChange={(e)=>setUsername(e.target.value)} required/>
                 <input placeholder="Email" value={email} type="email"  onChange={(e)=>setEmail(e.target.value)} required/>

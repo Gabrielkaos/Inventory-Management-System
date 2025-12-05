@@ -1,26 +1,28 @@
-
 import "./Header.css"
 import { useContext } from "react"
+import { Link } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext"
 
-
 const Header = () => {
-    
-    const {user, logout} = useContext(AuthContext)
+    const { user, logout } = useContext(AuthContext)
+
     return (
-        <header>
-            <div>
-                <a href="/products">Products</a>-  
-                <a href="/categories">Categories</a>
-            </div>
-            <div className="header-div">
-                <p>Hello {user.username}</p>
-                <button onClick={logout}>Logout</button>
+        <header className="header">
+            <nav className="nav-links">
+                <Link to="/products">Products</Link>
+                <Link to="/categories">Categories</Link>
+            </nav>
+
+            <div className="user-section">
+                <p className="user-text">
+                    Hello {user?.username ?? "User"}
+                </p>
+                <button className="logout-btn" onClick={logout}>
+                    Logout
+                </button>
             </div>
         </header>
     )
 }
 
-
 export default Header
-

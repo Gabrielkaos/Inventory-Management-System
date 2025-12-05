@@ -1,10 +1,51 @@
-header {
-    background: rgb(71, 69, 69);
-    
+.header {
+    width: 100%;
+    background: #1f2937;
+    color: white;
+    padding: 12px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.header-div {
-    align-items: center;
+.nav-links {
     display: flex;
-    margin-left: 80%;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-text {
+    font-size: 15px;
+}
+
+.logout-btn {
+    background: #ef4444;
+    border: none;
+    padding: 6px 12px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.logout-btn:hover {
+    background: #dc2626;
 }

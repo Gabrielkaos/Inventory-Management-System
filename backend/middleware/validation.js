@@ -75,10 +75,14 @@ const validateProduct = [
         .isIn(["active", "discontinued", "out-of-stock"])
         .withMessage("Status must be one of 'active', 'discontinued', 'out-of-stock'"),
 
-    body("updatedBy")
+    body("categoryId")
+        .isUUID()
+        .withMessage("Category must be a valid UUID"),
+
+    body("userId")
         .optional()
         .isUUID()
-        .withMessage("updatedBy must be a valid UUID"),
+        .withMessage("userId must be a valid UUID"),
 
     validate
 ]
