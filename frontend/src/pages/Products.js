@@ -45,7 +45,7 @@ const Products = () => {
             const res = await api.post("/products",{
                 name:productName,
                 description:productDescription,
-                category:productCategory,
+                categoryId:productCategory,
                 stock:productStock,
                 unit:productUnit
             })
@@ -78,18 +78,18 @@ const Products = () => {
                 {error && <div>{error}</div>}
 
                 <form onSubmit={(e)=>addProduct(e)}>
-                    <input placeholder="Product Name" required onChange={(e)=>setProductName(e.target.value)} value={productName}/>
+                    <input placeholder="Product Name" onChange={(e)=>setProductName(e.target.value)} value={productName}/>
                     <textarea placeholder="Description" onChange={(e)=>setProductDescription(e.target.value)} value={productDescription}/>
                     
-                    <select required onChange={(e)=>setProductCategory(e.target.value)} value={productCategory}>
+                    <select onChange={(e)=>setProductCategory(e.target.value)} value={productCategory}>
                         <option value="">Select Category</option>
                         {categories.map((category)=>(
                             <option key={category.id} value={category.id}>{category.name}</option>
                         ))}
                     </select>
 
-                    <input placeholder="Stock" required onChange={(e)=>setProductStock(e.target.value)} value={productStock} />
-                    <select required onChange={(e)=>setProductUnit(e.target.value)} value={productUnit} >
+                    <input placeholder="Stock" onChange={(e)=>setProductStock(e.target.value)} value={productStock} />
+                    <select onChange={(e)=>setProductUnit(e.target.value)} value={productUnit} >
                         <option value="">Select Unit</option>
                         <option value="kg">Kilograms (kg)</option>
                         <option value="g">Grams (g)</option>
