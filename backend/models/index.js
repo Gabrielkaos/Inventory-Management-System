@@ -1,6 +1,7 @@
 const User = require("./User")
 const Product = require("./Product")
 const Category = require("./Category")
+const Supplier = require("./Supplier")
 
 Product.belongsTo(User, {
     foreignKey: "user_id",
@@ -11,6 +12,15 @@ User.hasMany(Product, {
     as: "products"
 })
 
+Supplier.belongsTo(User,{
+    foreignKey:"user_id",
+    as:"owner"
+})
+
+User.hasMany(Supplier,{
+    foreignKey:"user_id",
+    as:"suppliers"
+})
 
 Product.belongsTo(Category, {
     foreignKey: "category_id",
@@ -23,4 +33,4 @@ Category.hasMany(Product, {
 })
 
 
-module.exports = {User, Product, Category}
+module.exports = {User, Product, Category, Supplier}

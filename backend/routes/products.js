@@ -109,9 +109,12 @@ router.put("/:id",validateProductID,asyncHandler(async (req, res)=>{
     }
 
     if(categoryId){
+
         const fetchedCategory = await Category.findOne({where:{id:categoryId}})
         if(!fetchedCategory)throw new AppError("Category not found",404)
         product.categoryId = categoryId
+        const uniqueCode = `${fetchedCategory.name}-${Date.now().toString(36).toUpperCase()}`
+        product.uniqueCode = uniqueCode
     }
 
     if(name !== undefined || name != "")product.name=name

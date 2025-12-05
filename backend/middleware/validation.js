@@ -14,6 +14,46 @@ const validate = async (req, res, next) => {
     next()
 }
 
+const validateSupplier = [
+    body("name")
+        .trim()
+        .notEmpty()
+        .withMessage("Supplier name is required")
+        .isLength({ min: 2, max: 100 })
+        .withMessage("Supplier name must be 2-100 characters"),
+    body("email")
+        .trim()
+        .notEmpty()
+        .withMessage("Email is required")
+        .isEmail()
+        .withMessage("Must be a valid email address"),
+    body("phone")
+        .optional()
+        .trim()
+        .isLength({ max: 20 })
+        .withMessage("Phone must be less than 20 characters"),
+    body("contactPerson")
+        .optional()
+        .trim()
+        .isLength({ max: 100 })
+        .withMessage("Contact person must be less than 100 characters"),
+    body("status")
+        .optional()
+        .isIn(["active", "inactive"])
+        .withMessage("Status must be either 'active' or 'inactive'"),
+    validate
+]
+
+const validateCategory = [
+    body("name")
+        .trim()
+        .notEmpty()
+        .withMessage("Category name is required")
+        .isLength({ min: 1, max: 50 })
+        .withMessage("Category name must be 1-50 characters"),
+    validate
+]
+
 const validateRegister = [
     body("username")
         .trim()
@@ -94,4 +134,4 @@ const validateProductID = [
     validate
 ]
 
-module.exports = {validateRegister, validateLogin, validateProduct, validateProductID}
+module.exports = {validateRegister, validateLogin, validateProduct, validateProductID, validateCategory, validateSupplier}
