@@ -145,16 +145,6 @@ const StockTransactions = () => {
         setDetailModal(true)
     }
 
-    const getTransactionIcon = (type) => {
-        const icons = {
-            "in": "📥",
-            "out": "📤",
-            "adjustment": "⚖️",
-            "return": "↩️"
-        }
-        return icons[type] || "📦"
-    }
-
     const getTransactionBadge = (type) => {
         const badges = {
             "in": { class: "type-in", label: "Stock In" },
@@ -259,10 +249,10 @@ const StockTransactions = () => {
                                     required
                                 >
                                     <option value="">Transaction Type *</option>
-                                    <option value="in">📥 Stock In (Receive from supplier)</option>
-                                    <option value="out">📤 Stock Out (Sale/Issue)</option>
-                                    <option value="adjustment">⚖️ Adjustment (Correction)</option>
-                                    <option value="return">↩️ Return</option>
+                                    <option value="in">Stock In (Receive from supplier)</option>
+                                    <option value="out">Stock Out (Sale/Issue)</option>
+                                    <option value="adjustment">Adjustment (Correction)</option>
+                                    <option value="return">Return</option>
                                 </select>
 
                                 <input
@@ -296,7 +286,7 @@ const StockTransactions = () => {
                             <div className="search-box">
                                 <input
                                     type="text"
-                                    placeholder="🔍 Search transactions..."
+                                    placeholder="Search transactions..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                 />
@@ -342,7 +332,10 @@ const StockTransactions = () => {
                                     {filteredTransactions.map(transaction => (
                                         <div key={transaction.id} className="timeline-item">
                                             <div className="timeline-icon">
-                                                {getTransactionIcon(transaction.type)}
+                                                {transaction.type==="in" &&  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M440-800v487L216-537l-56 57 320 320 320-320-56-57-224 224v-487h-80Z"/></svg>}
+                                                {transaction.type==="out" &&  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z"/></svg>}
+                                                {transaction.type==="adjustment" &&  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M80-80q0-111 29.5-189.5T185-400q46-52 103-80.5T400-520v-120q-137-17-228.5-84.5T80-880h800q0 88-91.5 155.5T560-640v120q55 11 112 39.5T775-400q46 52 75.5 130.5T880-80H640v-80h155q-18-152-113.5-220T480-448q-106 0-201.5 68T165-160h155v80H80Zm400-635q91 0 162-24.5T755-800H205q42 36 113 60.5T480-715Zm0 635q-33 0-56.5-23.5T400-160q0-17 6.5-31t17.5-25q24-24 81-50.5T640-320q-28 78-54 135t-50 81q-11 11-25 17.5T480-80Zm0-635Z"/></svg>}
+                                                {transaction.type==="return" &&  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M360-240 120-480l240-240 56 56-144 144h488v-160h80v240H272l144 144-56 56Z"/></svg>}
                                             </div>
                                             <div className="timeline-content">
                                                 <div className="timeline-header-row">
@@ -363,14 +356,14 @@ const StockTransactions = () => {
                                                 <div className="timeline-details">
                                                     {transaction.referenceNumber && (
                                                         <span className="detail-item">
-                                                            📋 Ref: <code>{transaction.referenceNumber}</code>
+                                                            Ref: <code>{transaction.referenceNumber}</code>
                                                         </span>
                                                     )}
                                                     <span className="detail-item">
-                                                        👤 By: {transaction.owner?.username || 'System'}
+                                                        By: {transaction.owner?.username || 'System'}
                                                     </span>
                                                     <span className="detail-item">
-                                                        📅 {new Date(transaction.createdAt).toLocaleString()}
+                                                        {new Date(transaction.createdAt).toLocaleString()}
                                                     </span>
                                                 </div>
 
@@ -442,7 +435,8 @@ const StockTransactions = () => {
                                                         className="btn-view"
                                                         onClick={() => openDetails(transaction)}
                                                     >
-                                                        👁️
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#ffffffff"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+                                                        
                                                     </button>
                                                 </td>
                                             </tr>

@@ -63,6 +63,12 @@ const Product = sequelize.define("Product", {
         type: DataTypes.UUID,
         allowNull: true,
         field: "user_id"
+    },
+
+    supplierId: {
+        type: DataTypes.UUID,
+        allowNull: true,
+        field: "supplier_id"
     }
 
 }, {
