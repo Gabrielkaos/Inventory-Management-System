@@ -4,7 +4,7 @@ A comprehensive, professional-grade inventory management system built with React
 
 ---
 
-## ✨ Features
+## Features
 
 ### **Dashboard**
 - **Real-time Overview** - Complete system statistics at a glance
