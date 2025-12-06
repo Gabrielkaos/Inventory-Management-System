@@ -17,6 +17,16 @@ User.hasMany(Product, {
 
 //supplier
 
+Product.belongsTo(Supplier,{
+    foreignKey:"supplier_id",
+    as:"supplier"
+})
+
+Supplier.hasMany(Product,{
+    foreignKey:"supplier_id",
+    as:"products"
+})
+
 Supplier.belongsTo(User,{
     foreignKey:"user_id",
     as:"owner"

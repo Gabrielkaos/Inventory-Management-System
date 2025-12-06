@@ -261,7 +261,7 @@ const Suppliers = () => {
                             <div className="search-box">
                                 <input
                                     type="text"
-                                    placeholder="🔍 Search suppliers..."
+                                    placeholder="Search suppliers..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                 />

@@ -7,6 +7,7 @@ const Products = () => {
     const [products, setProducts] = useState([])
     const [filteredProducts, setFilteredProducts] = useState([])
     const [categories, setCategories] = useState([])
+    const [suppliers, setSuppliers] = useState([])
 
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(true)
@@ -17,6 +18,7 @@ const Products = () => {
     const [productCategory, setProductCategory] = useState("")
     const [productUnit, setProductUnit] = useState("")
     const [productStock, setProductStock] = useState("")
+    const [productSupplier, setProductSupplier] = useState("")
 
     // Modal states
     const [editModal, setEditModal] = useState(false)
@@ -46,6 +48,15 @@ const Products = () => {
         }
     }
 
+    const fetchSuppliers = async () => {
+        try {
+            const res = await api.get("/suppliers")
+            setSuppliers(res.data.data.suppliers)
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     const fetchCategories = async () => {
         try {
             const res = await api.get("/categories")
@@ -58,6 +69,7 @@ const Products = () => {
     useEffect(() => {
         fetchProducts()
         fetchCategories()
+        fetchSuppliers()
     }, [])
 
     // Filter and search logic
@@ -110,6 +122,7 @@ const Products = () => {
                 categoryId: productCategory,
                 stock: productStock,
                 unit: productUnit,
+                supplierId:productSupplier
             })
 
             if (res.data.status === "success") {
@@ -119,6 +132,7 @@ const Products = () => {
                 setProductCategory("")
                 setProductUnit("")
                 setProductStock("")
+                setProductSupplier("")
             }
         } catch (err) {
             if (err.response?.data?.details) {
@@ -150,6 +164,7 @@ const Products = () => {
                 categoryId: editProduct.categoryId,
                 stock: editProduct.stock,
                 unit: editProduct.unit,
+                supplierId:editProduct.supplierId
             })
 
             if (res.data.status === "success") {
@@ -285,6 +300,17 @@ const Products = () => {
                             <form onSubmit={addProduct} className="product-form">
                                 {error && <p className="error">{error}</p>}
 
+                                <select 
+                                    value={productSupplier} 
+                                    onChange={(e)=>setProductSupplier(e.target.value)}
+                                    required
+                                >
+                                    <option value="">Select Supplier</option>
+                                    {suppliers.map(c => (
+                                        <option key={c.id} value={c.id}>{c.name}</option>
+                                    ))}
+                                </select>
+
                                 <input 
                                     placeholder="Product Name" 
                                     value={productName} 
@@ -390,6 +416,7 @@ const Products = () => {
                                             />
                                         </th>
                                         <th>Name</th>
+                                        <th>Supplier</th>
                                         <th>Category</th>
                                         <th>Stock</th>
                                         <th>Unit</th>
@@ -424,6 +451,7 @@ const Products = () => {
                                                         <div className="product-desc">{product.description.substring(0, 50)}...</div>
                                                     )}
                                                 </td>
+                                                <td>{product.supplier?.name || '-'}</td>
                                                 <td>{product.category?.name || '-'}</td>
                                                 <td>
                                                     <div className="stock-control">
@@ -480,6 +508,16 @@ const Products = () => {
                             <h3>Edit Product</h3>
 
                             <form onSubmit={updateProduct}>
+                                <select 
+                                    value={editProduct.supplierId} 
+                                    onChange={(e)=>setEditProduct({...editProduct, supplierId:e.target.value})}
+                                    required
+                                >
+                                    <option value="">Select Supplier</option>
+                                    {suppliers.map(c => (
+                                        <option key={c.id} value={c.id}>{c.name}</option>
+                                    ))}
+                                </select>
                                 <input 
                                     placeholder="Product Name"
                                     value={editProduct.name} 
@@ -537,12 +575,12 @@ const Products = () => {
                 {detailModal && selectedProduct && (
                     <div className="modal">
                         <div className="modal-content detail-modal">
-                            <h3>Product Details</h3>
+                            <h3>Product Details:{selectedProduct.name}</h3>
                             
                             <div className="detail-grid">
                                 <div className="detail-item">
-                                    <label>Product Name:</label>
-                                    <p>{selectedProduct.name}</p>
+                                    <label>Supplier:</label>
+                                    <p>{selectedProduct.supplier?.name}</p>
                                 </div>
                                 <div className="detail-item">
                                     <label>Unique Code:</label>

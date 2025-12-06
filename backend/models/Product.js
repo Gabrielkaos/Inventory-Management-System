@@ -68,7 +68,11 @@ const Product = sequelize.define("Product", {
     supplierId: {
         type: DataTypes.UUID,
         allowNull: true,
-        field: "supplier_id"
+        field: "supplier_id",
+        references:{
+            model:"suppliers",
+            key:"id"
+        }
     }
 
 }, {

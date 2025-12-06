@@ -1,7 +1,8 @@
-import "./Header.css"
+
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext"
+import "./Header.css"
 
 const Header = () => {
     const { user, logout } = useContext(AuthContext)
@@ -9,6 +10,7 @@ const Header = () => {
     return (
         <header className="header">
             <nav className="nav-links">
+                <Link to="/dashboard">Dashboard</Link>
                 <Link to="/products">Products</Link>
                 <Link to="/categories">Categories</Link>
                 <Link to="/suppliers">Suppliers</Link>

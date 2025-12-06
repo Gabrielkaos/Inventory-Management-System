@@ -157,7 +157,7 @@ const Categories = () => {
     }
 
     return (
-        <div>
+        <div className="categories-file">
             <Header />
 
             <div className="categories-container">

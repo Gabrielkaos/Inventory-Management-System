@@ -9,6 +9,7 @@ import Products from './pages/Products';
 import Categories from './pages/Categories';
 import Suppliers from './pages/Suppliers';
 import StockTransactions from './pages/StockTransaction';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -17,31 +18,37 @@ function App() {
         <Routes>
           <Route path='/register' element={<Register/>}/>
           <Route path='/login' element={<Login/>}/>
-          
-          <Route path='/products' element={
-              <ProtectedRoute>
-                  <Products/>
-              </ProtectedRoute>
-            }/>
-            <Route path='/categories' element={
-              <ProtectedRoute>
-                  <Categories/>
-              </ProtectedRoute>
-            }/>
-            <Route path='/suppliers' element={
-              <ProtectedRoute>
-                  <Suppliers/>
-              </ProtectedRoute>
-            }/>
 
-            <Route path='/transactions' element={
-              <ProtectedRoute>
-                  <StockTransactions/>
-              </ProtectedRoute>
-            }/>
+          <Route path='/dashboard' element={
+            <ProtectedRoute>
+                <Dashboard/>
+            </ProtectedRoute>
+          }/>
+
+          <Route path='/products' element={
+            <ProtectedRoute>
+                <Products/>
+            </ProtectedRoute>
+          }/>
+          <Route path='/categories' element={
+            <ProtectedRoute>
+                <Categories/>
+            </ProtectedRoute>
+          }/>
+          <Route path='/suppliers' element={
+            <ProtectedRoute>
+                <Suppliers/>
+            </ProtectedRoute>
+          }/>
+
+          <Route path='/transactions' element={
+            <ProtectedRoute>
+                <StockTransactions/>
+            </ProtectedRoute>
+          }/>
             
           
-          <Route path='/' element={<Navigate to="/products" replace/>}/>
+          <Route path='/' element={<Navigate to="/dashboard" replace/>}/>
         </Routes>
       </Router>
     </AuthProvider>
