@@ -18,15 +18,17 @@ connectDB()
 
 app.set("trust proxy",1)
 
-//security
-app.use(securityHeaders)
-app.use(limiter)
-
-//cors and express.json
+//cors
 app.use(cors({
     origin:config.cors.origin,
     credentials:true
 }))
+
+//security
+app.use(securityHeaders)
+app.use(limiter)
+
+//express.json
 app.use(express.json({limit:"10mb"}))
 app.use(express.urlencoded({limit:"10mb",extended:true}))
 

@@ -26,7 +26,7 @@ const Dashboard = () => {
         try {
             setLoading(true)
             
-            // Fetch all data in parallel
+            
             const [productsRes, categoriesRes, suppliersRes, transactionsRes] = await Promise.all([
                 api.get("/products"),
                 api.get("/categories"),
@@ -39,7 +39,7 @@ const Dashboard = () => {
             const suppliers = suppliersRes.data.data.suppliers
             const transactions = transactionsRes.data.data.transactions
 
-            // Calculate product stats
+            
             const productStats = {
                 total: products.length,
                 active: products.filter(p => p.status === "active").length,
@@ -47,7 +47,7 @@ const Dashboard = () => {
                 outOfStock: products.filter(p => p.stock === 0).length
             }
 
-            // Calculate category stats
+            
             const categoryProductCount = {}
             products.forEach(p => {
                 if (p.categoryId) {
@@ -61,14 +61,14 @@ const Dashboard = () => {
                 empty: categories.length - Object.keys(categoryProductCount).length
             }
 
-            // Calculate supplier stats
+            
             const supplierStats = {
                 total: suppliers.length,
                 active: suppliers.filter(s => s.status === "active").length,
                 inactive: suppliers.filter(s => s.status === "inactive").length
             }
 
-            // Calculate transaction stats
+            
             const today = new Date().toDateString()
             const transactionStats = {
                 total: transactions.length,
@@ -84,10 +84,10 @@ const Dashboard = () => {
                 transactions: transactionStats
             })
 
-            // Set recent transactions (last 5)
+            
             setRecentTransactions(transactions.slice(0, 5))
 
-            // Set low stock products
+            
             setLowStockProducts(
                 products
                     .filter(p => p.stock > 0 && p.stock < 10)
@@ -95,7 +95,7 @@ const Dashboard = () => {
                     .slice(0, 5)
             )
 
-            // Set top categories by product count
+            
             const categoryData = categories
                 .map(c => ({
                     ...c,
@@ -105,7 +105,7 @@ const Dashboard = () => {
                 .slice(0, 5)
             setTopCategories(categoryData)
 
-            // Set recent products (last 5 added)
+            
             setRecentProducts(
                 products
                     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -127,9 +127,11 @@ const Dashboard = () => {
     }
 
     const calculateInventoryValue = () => {
-        // Mock calculation - in real system, you'd have prices
+        //TODO
         return stats.products.total * 100
     }
+
+    
 
     if (loading) {
         return (
@@ -220,7 +222,7 @@ const Dashboard = () => {
                                 <span className="badge badge-danger">-{stats.transactions.stockOut} Out</span>
                                 <span className="badge badge-info">{stats.transactions.today} Today</span>
                             </div>
-                            <Link to="/stock-transactions" className="stat-link">View History →</Link>
+                            <Link to="/transactions" className="stat-link">View History →</Link>
                         </div>
                     </div>
                 </div>
@@ -317,7 +319,7 @@ const Dashboard = () => {
                                 </div>
                             )}
                         </div>
-                        <Link to="/stock-transactions" className="card-footer-link">
+                        <Link to="/transactions" className="card-footer-link">
                             View All Transactions →
                         </Link>
                     </div>
@@ -397,11 +399,11 @@ const Dashboard = () => {
                             <span className="action-icon"></span>
                             <span>Add Product</span>
                         </Link>
-                        <Link to="/stock-transactions" className="action-btn action-success">
+                        <Link to="/transactions" className="action-btn action-success">
                             <span className="action-icon"></span>
                             <span>Record Stock In</span>
                         </Link>
-                        <Link to="/stock-transactions" className="action-btn action-danger">
+                        <Link to="/transactions" className="action-btn action-danger">
                             <span className="action-icon"></span>
                             <span>Record Stock Out</span>
                         </Link>
