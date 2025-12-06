@@ -172,20 +172,6 @@ const Products = () => {
         }
     }
 
-    const adjustStock = async (productId, adjustment) => {
-        try {
-            const product = products.find(p => p.id === productId)
-            const newStock = Math.max(0, product.stock + adjustment)
-            
-            await api.put(`/products/${productId}`, {
-                ...product,
-                stock: newStock
-            })
-            fetchProducts()
-        } catch (err) {
-            alert("Failed to adjust stock")
-        }
-    }
 
     const bulkDelete = async () => {
         if (!window.confirm(`Delete ${selectedProducts.length} products?`)) return
@@ -441,17 +427,11 @@ const Products = () => {
                                                 <td>{product.category?.name || '-'}</td>
                                                 <td>
                                                     <div className="stock-control">
-                                                        <button 
-                                                            className="stock-btn"
-                                                            onClick={() => adjustStock(product.id, -1)}
-                                                        >-</button>
+                                                        
                                                         <span className={`stock-value ${getStockClass(product.stock)}`}>
                                                             {product.stock}
                                                         </span>
-                                                        <button 
-                                                            className="stock-btn"
-                                                            onClick={() => adjustStock(product.id, 1)}
-                                                        >+</button>
+                                                        
                                                     </div>
                                                 </td>
                                                 <td>{product.unit}</td>

@@ -54,6 +54,33 @@ const validateCategory = [
     validate
 ]
 
+const validateTransaction = [
+    body("productId")
+        .notEmpty()
+        .withMessage("Product ID is required")
+        .isUUID()
+        .withMessage("Invalid product ID"),
+    body("type")
+        .notEmpty()
+        .withMessage("Transaction type is required")
+        .isIn(["in", "out", "adjustment", "return"])
+        .withMessage("Invalid transaction type"),
+    body("quantity")
+        .notEmpty()
+        .withMessage("Quantity is required")
+        .isInt({ min: 1 })
+        .withMessage("Quantity must be a positive integer"),
+    body("referenceNumber")
+        .optional()
+        .trim()
+        .isLength({ max: 50 })
+        .withMessage("Reference number must be less than 50 characters"),
+    body("notes")
+        .optional()
+        .trim(),
+    validate
+]
+
 const validateRegister = [
     body("username")
         .trim()
@@ -134,4 +161,4 @@ const validateProductID = [
     validate
 ]
 
-module.exports = {validateRegister, validateLogin, validateProduct, validateProductID, validateCategory, validateSupplier}
+module.exports = {validateRegister, validateLogin, validateProduct, validateProductID, validateCategory, validateSupplier,validateTransaction}

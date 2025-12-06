@@ -9,6 +9,7 @@ const authRoute = require("./routes/auth")
 const productRoute = require("./routes/products")
 const categoryRoute = require("./routes/categories")
 const supplierRoute = require("./routes/supplier")
+const stockTransactionRoute = require("./routes/stockTransaction")
 
 app = express()
 const PORT = config.server.port
@@ -54,6 +55,7 @@ app.use("/api/auth",authRoute)
 app.use("/api/products",productRoute)
 app.use("/api/categories",categoryRoute)
 app.use("/api/suppliers",supplierRoute)
+app.use("/api/stock-transactions",stockTransactionRoute)
 
 //landing
 app.get('/', (req, res) => {
